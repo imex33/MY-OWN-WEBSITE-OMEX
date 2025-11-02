@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import NetworkSecurity from "./pages/NetworkSecurity";
+import PenetrationTesting from "./pages/PenetrationTesting";
+import WebSecurity from "./pages/WebSecurity";
+import Tools from "./pages/Tools";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +20,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/network-security" element={<NetworkSecurity />} />
+          <Route path="/penetration-testing" element={<PenetrationTesting />} />
+          <Route path="/web-security" element={<WebSecurity />} />
+          <Route path="/tools" element={<Tools />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
