@@ -80,6 +80,9 @@ const Index = () => {
               <Link to="/tools" className="text-sm font-medium hover:text-primary transition-colors">
                 Tools
               </Link>
+              <Link to="/tor-guide" className="text-sm font-medium hover:text-primary transition-colors">
+                Tor Guide
+              </Link>
             </nav>
           </div>
         </div>
