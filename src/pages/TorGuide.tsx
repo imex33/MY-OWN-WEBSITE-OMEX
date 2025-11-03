@@ -288,6 +288,233 @@ const TorGuide = () => {
 
           <Card>
             <CardHeader>
+              <CardTitle>Tails OS - The Ultimate Anonymity Solution</CardTitle>
+              <CardDescription>Complete guide to using Tails for maximum privacy</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertTitle>What is Tails?</AlertTitle>
+                <AlertDescription>
+                  Tails (The Amnesic Incognito Live System) is a portable operating system that protects against 
+                  surveillance and censorship. It runs from USB/DVD, routes all connections through Tor, and 
+                  leaves no trace on the computer you're using.
+                </AlertDescription>
+              </Alert>
+
+              <div>
+                <Badge className="mb-3">Step 1: Download Tails</Badge>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Visit the official Tails website:
+                    <div className="bg-muted p-2 rounded font-mono text-xs mt-1">
+                      https://tails.net/install/
+                    </div>
+                  </li>
+                  <li>Download the latest Tails ISO image (usually 1.2-1.3 GB)</li>
+                  <li>Download the verification tools to ensure authentic download</li>
+                  <li>Verify the download using:
+                    <div className="bg-muted p-2 rounded font-mono text-xs mt-1">
+                      # On Linux/Mac<br/>
+                      gpg --verify tails-amd64-*.img.sig tails-amd64-*.img
+                    </div>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Step 2: Create Tails USB (Windows)</Badge>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Download balenaEtcher from balena.io/etcher</li>
+                  <li>Insert USB drive (minimum 8GB, will be erased)</li>
+                  <li>Open Etcher and select downloaded Tails .img file</li>
+                  <li>Select your USB drive</li>
+                  <li>Click "Flash!" and wait for completion</li>
+                  <li>Safely eject USB when finished</li>
+                </ol>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Step 2: Create Tails USB (Linux)</Badge>
+                <div className="space-y-2">
+                  <p className="text-sm">Using dd command (be careful with device names!):</p>
+                  <div className="bg-muted p-2 rounded font-mono text-xs">
+                    # Find your USB device<br/>
+                    lsblk
+                  </div>
+                  <div className="bg-muted p-2 rounded font-mono text-xs">
+                    # Write Tails to USB (replace sdX with your device)<br/>
+                    sudo dd if=tails-amd64-*.img of=/dev/sdX bs=4M status=progress && sync
+                  </div>
+                  <p className="text-xs text-destructive mt-2">
+                    Warning: Using wrong device name will destroy data! Double-check with lsblk
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Step 2: Create Tails USB (macOS)</Badge>
+                <div className="space-y-2">
+                  <p className="text-sm">Use Etcher or command line:</p>
+                  <div className="bg-muted p-2 rounded font-mono text-xs">
+                    # Find your USB device<br/>
+                    diskutil list
+                  </div>
+                  <div className="bg-muted p-2 rounded font-mono text-xs">
+                    # Unmount the disk (replace diskN)<br/>
+                    diskutil unmountDisk /dev/diskN
+                  </div>
+                  <div className="bg-muted p-2 rounded font-mono text-xs">
+                    # Write Tails to USB<br/>
+                    sudo dd if=tails-amd64-*.img of=/dev/rdiskN bs=4m && sync
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Step 3: Boot into Tails</Badge>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Insert Tails USB into computer you want to use</li>
+                  <li>Restart computer and access boot menu:
+                    <ul className="ml-6 mt-1 space-y-1 text-xs">
+                      <li>• Windows: Usually F12, F11, F9, or ESC during startup</li>
+                      <li>• Mac: Hold Option/Alt key during startup</li>
+                      <li>• Linux: Usually F12, F2, or DEL</li>
+                    </ul>
+                  </li>
+                  <li>Select USB drive from boot menu</li>
+                  <li>Wait for Tails welcome screen to appear</li>
+                  <li>Click "Start Tails" (or configure additional settings)</li>
+                </ol>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Step 4: First Time Setup</Badge>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Language and keyboard layout selection</li>
+                  <li>Network connection:
+                    <div className="ml-6 text-xs space-y-1 mt-1">
+                      <p>• Connect to WiFi or Ethernet</p>
+                      <p>• Tails will automatically route through Tor</p>
+                      <p>• Wait for "Connected to Tor" notification</p>
+                    </div>
+                  </li>
+                  <li>Optional: Enable persistent storage (for saving files between sessions)</li>
+                  <li>Set administration password if needed for session</li>
+                </ol>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Key Features of Tails</Badge>
+                <ul className="list-disc list-inside space-y-2 text-sm">
+                  <li><strong>Amnesia:</strong> Leaves no trace on computer after shutdown</li>
+                  <li><strong>Tor Integration:</strong> All internet connections forced through Tor</li>
+                  <li><strong>Encryption Tools:</strong> Built-in PGP, LUKS encryption</li>
+                  <li><strong>Anonymous Communication:</strong> Tor Browser, Thunderbird email</li>
+                  <li><strong>Persistent Storage:</strong> Optional encrypted storage for files</li>
+                  <li><strong>Unsafe Browser:</strong> For captive portals (no Tor routing)</li>
+                  <li><strong>MAC Address Spoofing:</strong> Changes hardware address automatically</li>
+                </ul>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Using Persistent Storage (Optional)</Badge>
+                <p className="text-sm mb-2">Create encrypted storage to save files between sessions:</p>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Boot into Tails</li>
+                  <li>Applications → Tails → Configure persistent volume</li>
+                  <li>Choose strong passphrase (20+ characters recommended)</li>
+                  <li>Select what to persist:
+                    <ul className="ml-6 mt-1 space-y-1 text-xs">
+                      <li>• Personal files</li>
+                      <li>• Browser bookmarks</li>
+                      <li>• Email client</li>
+                      <li>• Network connections</li>
+                      <li>• Additional software</li>
+                    </ul>
+                  </li>
+                  <li>Restart Tails and unlock persistence at boot</li>
+                </ol>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Tails Security Best Practices</Badge>
+                <ul className="list-disc list-inside space-y-2 text-sm">
+                  <li><strong>Never</strong> log into personal accounts that can identify you</li>
+                  <li>Don't use Tails on compromised/monitored computers</li>
+                  <li>Always verify Tails downloads with GPG signatures</li>
+                  <li>Keep Tails updated (updates released every 6 weeks)</li>
+                  <li>Use strong passphrase for persistent storage (if enabled)</li>
+                  <li>Don't install additional software unless absolutely necessary</li>
+                  <li>Shut down properly (don't just unplug) to ensure RAM is cleared</li>
+                  <li>Consider using public WiFi for additional anonymity layer</li>
+                  <li>Disable Bluetooth and close laptop lid when not in use</li>
+                  <li>Be aware of physical security and shoulder surfing</li>
+                </ul>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Common Tails Applications</Badge>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <h5 className="font-semibold">Internet:</h5>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                      <li>Tor Browser - Anonymous web browsing</li>
+                      <li>Thunderbird - Email client with PGP</li>
+                      <li>Pidgin - Encrypted instant messaging</li>
+                      <li>OnionShare - Anonymous file sharing</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold">Security Tools:</h5>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                      <li>KeePassXC - Password manager</li>
+                      <li>GnuPG - Encryption and signing</li>
+                      <li>MAT2 - Metadata removal tool</li>
+                      <li>VeraCrypt - Disk encryption</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Badge className="mb-3">Updating Tails</Badge>
+                <p className="text-sm mb-2">Two methods to update:</p>
+                <div className="space-y-3">
+                  <div>
+                    <h5 className="font-semibold text-sm">Automatic Update:</h5>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                      <li>Boot Tails and connect to internet</li>
+                      <li>Wait for update notification (if available)</li>
+                      <li>Click "Upgrade" and follow instructions</li>
+                      <li>Restart after update completes</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-sm">Manual Update:</h5>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-2">
+                      <li>Download latest Tails image</li>
+                      <li>Create new USB using same method</li>
+                      <li>Clone persistent storage if needed</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <Alert className="mt-6">
+                <Info className="h-4 w-4" />
+                <AlertTitle>Important Limitations</AlertTitle>
+                <AlertDescription className="text-xs space-y-1">
+                  <p>• Tails cannot protect against hardware keyloggers or compromised BIOS</p>
+                  <p>• Connection timing analysis can still potentially track users</p>
+                  <p>• Not designed for high-risk scenarios like evading nation-state surveillance</p>
+                  <p>• Use responsibly and understand that no tool provides 100% anonymity</p>
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
               <CardTitle>Verifying Tor Connection</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
