@@ -10,6 +10,10 @@ import PenetrationTesting from "./pages/PenetrationTesting";
 import WebSecurity from "./pages/WebSecurity";
 import Tools from "./pages/Tools";
 import TorGuide from "./pages/TorGuide";
+import Forensics from "./pages/Forensics";
+import SecureCoding from "./pages/SecureCoding";
+import SystemSecurity from "./pages/SystemSecurity";
+import Cryptography from "./pages/Cryptography";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +30,10 @@ const App = () => (
           <Route path="/web-security" element={<WebSecurity />} />
           <Route path="/tools" element={<Tools />} />
           <Route path="/tor-guide" element={<TorGuide />} />
+          <Route path="/forensics" element={<Forensics />} />
+          <Route path="/secure-coding" element={<SecureCoding />} />
+          <Route path="/system-security" element={<SystemSecurity />} />
+          <Route path="/cryptography" element={<Cryptography />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
