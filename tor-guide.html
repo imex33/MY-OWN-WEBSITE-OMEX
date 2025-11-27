@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tor Installation Guide - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Complete guide to installing and using Tor Browser, Tor network, and Tails OS for anonymous browsing and privacy protection">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+            padding: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: #94a3b8;
+            text-decoration: none;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(100, 116, 139, 0.1);
+            border-color: rgba(100, 116, 139, 0.4);
+        }
+
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            color: #8b5cf6;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+        }
+
+        .page-subtitle {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .alert-destructive {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .alert-icon {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .alert-description {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .code-block {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #a5f3fc;
+            overflow-x: auto;
+            margin: 0.5rem 0;
+        }
+
+        .code-inline {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #a5f3fc;
+        }
+
+        ol, ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .section-spacing {
+            margin-top: 1.5rem;
+        }
+
+        h4, h5 {
+            color: #f1f5f9;
+            margin: 1rem 0 0.5rem;
+        }
+
+        strong {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .text-destructive {
+            color: #fca5a5;
+        }
+
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .ml-6 { margin-left: 1.5rem; }
+
+        p {
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="back-btn">← Back</a>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <h1>Tor Installation Guide</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">Installing Tor Browser & Network</h2>
+        <p class="page-subtitle">Learn how to install and configure Tor for anonymous browsing and privacy protection.</p>
+
+        <div class="alert">
+            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div>
+                <div class="alert-title">What is Tor?</div>
+                <div class="alert-description">
+                    Tor (The Onion Router) is free software that enables anonymous communication by routing traffic 
+                    through a worldwide network of volunteer relays. It protects your privacy and defends against 
+                    network surveillance and traffic analysis.
+                </div>
+            </div>
+        </div>
+
+        <!-- Windows Installation -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Installing Tor Browser on Windows</div>
+                <div class="card-description">The easiest way to use Tor on Windows</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <span class="badge">Method 1: Official Tor Browser</span>
+                    <ol>
+                        <li>Visit the official Tor Project website</li>
+                        <li>
+                            <div class="code-block">https://www.torproject.org/download/</div>
+                        </li>
+                        <li>Download the Windows installer (.exe file)</li>
+                        <li>Run the installer and choose installation language</li>
+                        <li>Select installation directory (default is fine)</li>
+                        <li>Click "Install" and wait for completion</li>
+                        <li>Launch Tor Browser from desktop or Start menu</li>
+                        <li>Click "Connect" to connect to the Tor network</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 2: Using Package Manager (Chocolatey)</span>
+                    <p>If you have Chocolatey installed:</p>
+                    <div class="code-block">choco install tor-browser</div>
+                </div>
+
+                <div class="section-spacing">
+                    <h4>First Run Configuration:</h4>
+                    <ul>
+                        <li>Choose "Connect" for standard connection</li>
+                        <li>Use "Configure" if you're behind a firewall or proxy</li>
+                        <li>Wait for connection to establish (may take 1-2 minutes)</li>
+                        <li>Test by visiting check.torproject.org</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linux Installation -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Installing Tor Browser on Linux (Ubuntu/Debian)</div>
+                <div class="card-description">Multiple installation methods for Linux systems</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <span class="badge">Method 1: Official Tor Browser Bundle</span>
+                    <ol>
+                        <li>Download from torproject.org</li>
+                        <li>
+                            <div class="code-block">wget https://www.torproject.org/dist/torbrowser/[version]/tor-browser-linux64-[version]_en-US.tar.xz</div>
+                        </li>
+                        <li>Extract the archive:
+                            <div class="code-block">tar -xf tor-browser-linux64-*.tar.xz</div>
+                        </li>
+                        <li>Navigate to extracted folder:
+                            <div class="code-block">cd tor-browser_en-US/</div>
+                        </li>
+                        <li>Run the browser:
+                            <div class="code-block">./start-tor-browser.desktop</div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 2: Using APT Repository</span>
+                    <p>Add Tor repository:</p>
+                    <div class="code-block">sudo apt install apt-transport-https</div>
+                    <div class="code-block">echo "deb https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/tor.list</div>
+                    <div class="code-block">wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | sudo tee /usr/share/keyrings/tor-archive-keyring.gpg</div>
+                    <div class="code-block">sudo apt update<br>sudo apt install tor torbrowser-launcher</div>
+                    <div class="code-block">torbrowser-launcher</div>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 3: Flatpak (Universal)</span>
+                    <div class="code-block">flatpak install flathub com.github.micahflee.torbrowser-launcher</div>
+                    <div class="code-block">flatpak run com.github.micahflee.torbrowser-launcher</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kali Linux Installation -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Installing Tor on Kali Linux</div>
+                <div class="card-description">Multiple options for Kali Linux users</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <span class="badge">Method 1: Tor Browser (Recommended)</span>
+                    <p>Kali Linux includes Tor Browser in repositories:</p>
+                    <div class="code-block">sudo apt update</div>
+                    <div class="code-block">sudo apt install -y tor torbrowser-launcher</div>
+                    <div class="code-block">torbrowser-launcher</div>
+                    <p class="text-destructive mt-2">This will download and install the official Tor Browser on first run</p>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 2: Tor Service (Command Line)</span>
+                    <p>Install Tor as a service for proxying:</p>
+                    <div class="code-block">sudo apt install tor</div>
+                    <div class="code-block">sudo systemctl start tor</div>
+                    <div class="code-block">sudo systemctl enable tor</div>
+                    <div class="code-block">sudo systemctl status tor</div>
+                    <p class="mt-2">Tor will now run on localhost:9050 (SOCKS5 proxy)</p>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 3: Using Proxychains with Tor</span>
+                    <p>Route any application through Tor:</p>
+                    <div class="code-block">sudo apt install tor proxychains4</div>
+                    <div class="code-block">sudo systemctl start tor</div>
+                    <p class="mt-2">Edit proxychains config:</p>
+                    <div class="code-block">sudo nano /etc/proxychains4.conf</div>
+                    <p class="mt-2">Ensure "socks5 127.0.0.1 9050" is at the bottom</p>
+                    <p class="mt-2">Usage example:</p>
+                    <div class="code-block">proxychains4 firefox<br>proxychains4 nmap -sT target.com</div>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 4: Anonsurf (Kali Specific)</span>
+                    <p>Route entire system through Tor:</p>
+                    <div class="code-block">sudo apt install kali-anonsurf</div>
+                    <div class="code-block">sudo anonsurf start</div>
+                    <div class="code-block">sudo anonsurf status</div>
+                    <div class="code-block">sudo anonsurf stop</div>
+                    <p class="text-destructive mt-2">Warning: This routes ALL traffic through Tor and may slow down your system</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- macOS Installation -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Installing Tor on macOS</div>
+                <div class="card-description">Installation methods for Mac users</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <span class="badge">Method 1: Tor Browser (Easiest)</span>
+                    <ol>
+                        <li>Download from torproject.org/download/</li>
+                        <li>Open the .dmg file</li>
+                        <li>Drag Tor Browser to Applications folder</li>
+                        <li>Open Tor Browser from Applications</li>
+                        <li>Click "Connect" to join Tor network</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Method 2: Using Homebrew</span>
+                    <div class="code-block">brew install tor</div>
+                    <div class="code-block">brew services start tor</div>
+                    <p class="mt-2">Tor will run as a service on localhost:9050</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tails OS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Tails OS - The Ultimate Anonymity Solution</div>
+                <div class="card-description">Complete guide to using Tails for maximum privacy</div>
+            </div>
+            <div class="card-content">
+                <div class="alert">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div>
+                        <div class="alert-title">What is Tails?</div>
+                        <div class="alert-description">
+                            Tails (The Amnesic Incognito Live System) is a portable operating system that protects against 
+                            surveillance and censorship. It runs from USB/DVD, routes all connections through Tor, and 
+                            leaves no trace on the computer you're using.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 1: Download Tails</span>
+                    <ol>
+                        <li>Visit the official Tails website:
+                            <div class="code-block">https://tails.net/install/</div>
+                        </li>
+                        <li>Download the latest Tails ISO image (usually 1.2-1.3 GB)</li>
+                        <li>Download the verification tools to ensure authentic download</li>
+                        <li>Verify the download using:
+                            <div class="code-block"># On Linux/Mac<br>gpg --verify tails-amd64-*.img.sig tails-amd64-*.img</div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 2: Create Tails USB (Windows)</span>
+                    <ol>
+                        <li>Download balenaEtcher from balena.io/etcher</li>
+                        <li>Insert USB drive (minimum 8GB, will be erased)</li>
+                        <li>Open Etcher and select downloaded Tails .img file</li>
+                        <li>Select your USB drive</li>
+                        <li>Click "Flash!" and wait for completion</li>
+                        <li>Safely eject USB when finished</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 2: Create Tails USB (Linux)</span>
+                    <p>Using dd command (be careful with device names!):</p>
+                    <div class="code-block"># Find your USB device<br>lsblk</div>
+                    <div class="code-block"># Write Tails to USB (replace sdX with your device)<br>sudo dd if=tails-amd64-*.img of=/dev/sdX bs=4M status=progress && sync</div>
+                    <p class="text-destructive mt-2">Warning: Using wrong device name will destroy data! Double-check with lsblk</p>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 2: Create Tails USB (macOS)</span>
+                    <p>Use Etcher or command line:</p>
+                    <div class="code-block"># Find your USB device<br>diskutil list</div>
+                    <div class="code-block"># Unmount the disk (replace diskN)<br>diskutil unmountDisk /dev/diskN</div>
+                    <div class="code-block"># Write Tails to USB<br>sudo dd if=tails-amd64-*.img of=/dev/rdiskN bs=4m && sync</div>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 3: Boot into Tails</span>
+                    <ol>
+                        <li>Insert Tails USB into computer you want to use</li>
+                        <li>Restart computer and access boot menu:
+                            <ul class="ml-6">
+                                <li>• Windows: Usually F12, F11, F9, or ESC during startup</li>
+                                <li>• Mac: Hold Option/Alt key during startup</li>
+                                <li>• Linux: Usually F12, F2, or DEL</li>
+                            </ul>
+                        </li>
+                        <li>Select USB drive from boot menu</li>
+                        <li>Wait for Tails welcome screen to appear</li>
+                        <li>Click "Start Tails" (or configure additional settings)</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Step 4: First Time Setup</span>
+                    <ol>
+                        <li>Language and keyboard layout selection</li>
+                        <li>Network connection:
+                            <div class="ml-6">
+                                <p>• Connect to WiFi or Ethernet</p>
+                                <p>• Tails will automatically route through Tor</p>
+                                <p>• Wait for "Connected to Tor" notification</p>
+                            </div>
+                        </li>
+                        <li>Optional: Enable persistent storage (for saving files between sessions)</li>
+                        <li>Set administration password if needed for session</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Key Features of Tails</span>
+                    <ul>
+                        <li><strong>Amnesia:</strong> Leaves no trace on computer after shutdown</li>
+                        <li><strong>Tor Integration:</strong> All internet connections forced through Tor</li>
+                        <li><strong>Encryption Tools:</strong> Built-in PGP, LUKS encryption</li>
+                        <li><strong>Anonymous Communication:</strong> Tor Browser, Thunderbird email</li>
+                        <li><strong>Persistent Storage:</strong> Optional encrypted storage for files</li>
+                        <li><strong>Unsafe Browser:</strong> For captive portals (no Tor routing)</li>
+                        <li><strong>MAC Address Spoofing:</strong> Changes hardware address automatically</li>
+                    </ul>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Using Persistent Storage (Optional)</span>
+                    <p>Create encrypted storage to save files between sessions:</p>
+                    <ol>
+                        <li>Boot into Tails</li>
+                        <li>Applications → Tails → Configure persistent volume</li>
+                        <li>Choose strong passphrase (20+ characters recommended)</li>
+                        <li>Select what to persist:
+                            <ul class="ml-6">
+                                <li>• Personal files</li>
+                                <li>• Browser bookmarks</li>
+                                <li>• Email client</li>
+                                <li>• Network connections</li>
+                                <li>• Additional software</li>
+                            </ul>
+                        </li>
+                        <li>Restart Tails and unlock persistence at boot</li>
+                    </ol>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Tails Security Best Practices</span>
+                    <ul>
+                        <li><strong>Never</strong> log into personal accounts that can identify you</li>
+                        <li>Don't use Tails on compromised/monitored computers</li>
+                        <li>Always verify Tails downloads with GPG signatures</li>
+                        <li>Keep Tails updated (updates released every 6 weeks)</li>
+                        <li>Use strong passphrase for persistent storage (if enabled)</li>
+                        <li>Don't install additional software unless absolutely necessary</li>
+                        <li>Shut down properly (don't just unplug) to ensure RAM is cleared</li>
+                        <li>Consider using public WiFi for additional anonymity layer</li>
+                        <li>Disable Bluetooth and close laptop lid when not in use</li>
+                        <li>Be aware of physical security and shoulder surfing</li>
+                    </ul>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Common Tails Applications</span>
+                    <div class="grid grid-2">
+                        <div>
+                            <h5>Internet:</h5>
+                            <ul>
+                                <li>Tor Browser - Anonymous web browsing</li>
+                                <li>Thunderbird - Email client with PGP</li>
+                                <li>Pidgin - Encrypted instant messaging</li>
+                                <li>OnionShare - Anonymous file sharing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Security Tools:</h5>
+                            <ul>
+                                <li>KeePassXC - Password manager</li>
+                                <li>GnuPG - Encryption and signing</li>
+                                <li>MAT2 - Metadata removal tool</li>
+                                <li>VeraCrypt - Disk encryption</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-spacing">
+                    <span class="badge">Updating Tails</span>
+                    <p>Two methods to update:</p>
+                    <div>
+                        <h5>Automatic Update:</h5>
+                        <ul>
+                            <li>Boot Tails and connect to internet</li>
+                            <li>Wait for update notification (if available)</li>
+                            <li>Click "Upgrade" and follow instructions</li>
+                            <li>Restart after update completes</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Manual Update:</h5>
+                        <ul>
+                            <li>Download latest Tails image</li>
+                            <li>Create new USB using same method</li>
+                            <li>Clone persistent storage if needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert alert-destructive mt-6">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div>
+                        <div class="alert-title">Important Limitations</div>
+                        <div class="alert-description">
+                            <p>• Tails cannot protect against hardware keyloggers or compromised BIOS</p>
+                            <p>• Connection timing analysis can still potentially track users</p>
+                            <p>• Not designed for high-risk scenarios like evading nation-state surveillance</p>
+                            <p>• Use responsibly and understand that no tool provides 100% anonymity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verifying Tor Connection -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Verifying Tor Connection</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <h4>Check if Tor is working:</h4>
+                    <ul>
+                        <li>Visit: <span class="code-inline">check.torproject.org</span></li>
+                        <li>Should display: "Congratulations. This browser is configured to use Tor."</li>
+                        <li>Check your IP has changed from your real IP</li>
+                        <li>Use: <span class="code-inline">curl --socks5 localhost:9050 https://check.torproject.org/api/ip</span></li>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <h4>Testing Tor Service (Command Line):</h4>
+                    <div class="code-block">curl --socks5 127.0.0.1:9050 https://check.torproject.org</div>
+                    <div class="code-block">curl --socks5 127.0.0.1:9050 https://ifconfig.me</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Best Practices -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Tor Security Best Practices</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>Always use HTTPS websites when possible</li>
+                    <li>Don't use Tor for torrenting (slow and bad for network)</li>
+                    <li>Don't install browser plugins in Tor Browser</li>
+                    <li>Keep Tor Browser updated to latest version</li>
+                    <li>Don't maximize Tor Browser window (fingerprinting)</li>
+                    <li>Avoid logging into personal accounts over Tor</li>
+                    <li>Don't open documents downloaded through Tor while online</li>
+                    <li>Use bridges if Tor is blocked in your country</li>
+                    <li>Consider using Tor with VPN for additional privacy</li>
+                    <li>Never use Tor for illegal activities</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Common Commands -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Common Tor Commands</div>
+            </div>
+            <div class="card-content">
+                <div>
+                    <h4>Service Management:</h4>
+                    <div class="code-block">sudo systemctl start tor</div>
+                    <div class="code-block">sudo systemctl stop tor</div>
+                    <div class="code-block">sudo systemctl restart tor</div>
+                    <div class="code-block">sudo systemctl status tor</div>
+                </div>
+
+                <div class="mt-4">
+                    <h4>Configuration:</h4>
+                    <div class="code-block">sudo nano /etc/tor/torrc</div>
+                    <p class="mt-2">Edit Tor configuration file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
