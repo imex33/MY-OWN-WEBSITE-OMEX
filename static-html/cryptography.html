@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptography - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn cryptography fundamentals including encryption algorithms and secure communication.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .alert-desc { font-size: 0.875rem; color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+        .code-block div { margin-bottom: 0.25rem; }
+        .code-comment { color: var(--muted); }
+        
+        ul, ol { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                </svg>
+                Cryptography
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>Cryptography Fundamentals</h2>
+            <p>Learn the principles of cryptography, encryption algorithms, and secure communication.</p>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">What is Cryptography?</div>
+            <div class="alert-desc">Cryptography is the practice of secure communication in the presence of adversaries. It involves creating and analyzing protocols that prevent unauthorized access to information and ensure data confidentiality, integrity, and authenticity.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cryptography Fundamentals</h3>
+                <p class="card-desc">Core concepts and terminology</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">Key Concepts</span>
+                <ul>
+                    <li><strong>Plaintext:</strong> Original, unencrypted data</li>
+                    <li><strong>Ciphertext:</strong> Encrypted data</li>
+                    <li><strong>Encryption:</strong> Converting plaintext to ciphertext</li>
+                    <li><strong>Decryption:</strong> Converting ciphertext back to plaintext</li>
+                    <li><strong>Key:</strong> Secret value used in encryption/decryption</li>
+                    <li><strong>Hash:</strong> One-way transformation of data</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">Security Goals (CIA Triad)</span>
+                    <ul>
+                        <li><strong>Confidentiality:</strong> Keep data secret from unauthorized parties</li>
+                        <li><strong>Integrity:</strong> Ensure data hasn't been modified</li>
+                        <li><strong>Authentication:</strong> Verify identity of communicating parties</li>
+                        <li><strong>Non-repudiation:</strong> Prevent denial of actions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Symmetric Encryption</h3>
+                <p class="card-desc">Same key for encryption and decryption</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">Common Algorithms</span>
+                <ul>
+                    <li><strong>AES (Advanced Encryption Standard):</strong> Most widely used, 128/192/256-bit keys</li>
+                    <li><strong>ChaCha20:</strong> Modern, fast, secure alternative to AES</li>
+                    <li><strong>DES:</strong> Deprecated, insecure (56-bit key)</li>
+                    <li><strong>3DES:</strong> Legacy, being phased out</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">AES Encryption Example (OpenSSL)</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Encrypt file with AES-256</div>
+                        <div>openssl enc -aes-256-cbc -salt -in plaintext.txt -out encrypted.bin</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Decrypt file</div>
+                        <div>openssl enc -aes-256-cbc -d -in encrypted.bin -out decrypted.txt</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Asymmetric Encryption (Public Key)</h3>
+                <p class="card-desc">Different keys for encryption and decryption</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">Common Algorithms</span>
+                <ul>
+                    <li><strong>RSA:</strong> Most widely used, 2048+ bit keys recommended</li>
+                    <li><strong>ECC (Elliptic Curve Crypto):</strong> Smaller keys, same security level</li>
+                    <li><strong>Ed25519:</strong> Modern, fast EdDSA signature scheme</li>
+                    <li><strong>Diffie-Hellman:</strong> Key exchange protocol</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">RSA Key Generation</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Generate RSA key pair (4096-bit)</div>
+                        <div>openssl genrsa -out private_key.pem 4096</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Extract public key</div>
+                        <div>openssl rsa -in private_key.pem -pubout -out public_key.pem</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">SSH Key Generation</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Generate Ed25519 SSH key (recommended)</div>
+                        <div>ssh-keygen -t ed25519 -C "your_email@example.com"</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Copy public key to server</div>
+                        <div>ssh-copy-id user@server</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cryptographic Hash Functions</h3>
+                <p class="card-desc">One-way functions for data integrity</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">Properties</span>
+                <ul>
+                    <li><strong>Deterministic:</strong> Same input always produces same output</li>
+                    <li><strong>Avalanche Effect:</strong> Small input change = large hash change</li>
+                    <li><strong>One-Way:</strong> Impossible to reverse</li>
+                    <li><strong>Collision Resistant:</strong> Hard to find two inputs with same hash</li>
+                </ul>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">Common Hash Algorithms</span>
+                    <ul>
+                        <li><strong>SHA-256:</strong> Part of SHA-2 family, 256-bit output (recommended)</li>
+                        <li><strong>SHA-3:</strong> Latest standard, different design than SHA-2</li>
+                        <li><strong>SHA-1:</strong> Deprecated, broken</li>
+                        <li><strong>MD5:</strong> Deprecated, very broken (DO NOT USE for security)</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">Hash Examples</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Calculate SHA-256 hash</div>
+                        <div>sha256sum file.txt</div>
+                        <div>echo -n "Hello World" | sha256sum</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Verify file integrity</div>
+                        <div>sha256sum -c checksums.txt</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <span class="badge">Password Hashing</span>
+                    <ul>
+                        <li><strong>bcrypt:</strong> Adaptive, with salt, widely used</li>
+                        <li><strong>Argon2:</strong> Winner of Password Hashing Competition (recommended)</li>
+                        <li><strong>scrypt:</strong> Memory-hard, good for passwords</li>
+                    </ul>
+                    <p style="color: #ef4444; font-size: 0.75rem; margin-top: 0.5rem;">
+                        ⚠️ Never use plain SHA-256 or MD5 for passwords!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Digital Signatures</h3>
+                <p class="card-desc">Proving authenticity and integrity</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">GPG/PGP Signatures</span>
+                <div class="code-block">
+                    <div class="code-comment"># Generate GPG key</div>
+                    <div>gpg --full-generate-key</div>
+                    <div class="code-comment" style="margin-top: 0.5rem;"># Sign a file</div>
+                    <div>gpg --sign document.txt</div>
+                    <div class="code-comment" style="margin-top: 0.5rem;"># Verify signature</div>
+                    <div>gpg --verify document.txt.sig document.txt</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

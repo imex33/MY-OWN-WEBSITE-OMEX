@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Security - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn system security including OS hardening, access control, and system monitoring.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .alert-desc { font-size: 0.875rem; color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+        .code-block div { margin-bottom: 0.25rem; }
+        .code-comment { color: var(--muted); }
+        
+        ul { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .section { margin-bottom: 1.5rem; }
+        .section:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                    <line x1="6" y1="6" x2="6.01" y2="6"/>
+                    <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+                System Security
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>System & Infrastructure Security</h2>
+            <p>Learn how to secure operating systems, servers, and infrastructure components.</p>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">What is System Security?</div>
+            <div class="alert-desc">System security focuses on protecting computer systems, servers, and infrastructure from unauthorized access, misuse, and threats. It includes hardening operating systems, implementing access controls, and monitoring for suspicious activities.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Linux System Hardening</h3>
+                <p class="card-desc">Securing Linux servers and workstations</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">User & Access Management</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Create user with limited privileges</div>
+                        <div>sudo useradd -m -s /bin/bash username</div>
+                        <div>sudo passwd username</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Add user to sudo group (if needed)</div>
+                        <div>sudo usermod -aG sudo username</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Lock/disable user account</div>
+                        <div>sudo passwd -l username</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">SSH Security</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Harden SSH configuration (/etc/ssh/sshd_config):</p>
+                    <div class="code-block">
+                        <div class="code-comment"># Disable root login</div>
+                        <div>PermitRootLogin no</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Disable password authentication (use keys)</div>
+                        <div>PasswordAuthentication no</div>
+                        <div>PubkeyAuthentication yes</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Change default port (optional)</div>
+                        <div>Port 2222</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Limit user access</div>
+                        <div>AllowUsers user1 user2</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Firewall Configuration (UFW)</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Enable UFW</div>
+                        <div>sudo ufw enable</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Set default policies</div>
+                        <div>sudo ufw default deny incoming</div>
+                        <div>sudo ufw default allow outgoing</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Allow specific services</div>
+                        <div>sudo ufw allow ssh</div>
+                        <div>sudo ufw allow 80/tcp</div>
+                        <div>sudo ufw allow 443/tcp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">File System Security</h3>
+                <p class="card-desc">Protecting files and directories</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">File Permissions</span>
+                    <div class="code-block">
+                        <div class="code-comment"># View permissions</div>
+                        <div>ls -la</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Change permissions (numeric)</div>
+                        <div>chmod 750 file.txt  # rwxr-x---</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Change ownership</div>
+                        <div>sudo chown user:group file.txt</div>
+                    </div>
+                    <p style="color: var(--muted); font-size: 0.75rem; margin-top: 0.5rem;">
+                        Permission values: r=4, w=2, x=1 (e.g., 755 = rwxr-xr-x)
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Find Security Issues</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Find SUID/SGID files (potential privilege escalation)</div>
+                        <div>find / -perm -4000 -type f 2>/dev/null</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Find world-writable files</div>
+                        <div>find / -perm -002 -type f 2>/dev/null</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Find files without owner</div>
+                        <div>find / -nouser -o -nogroup 2>/dev/null</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Monitoring & Logging</h3>
+                <p class="card-desc">System monitoring and audit logging</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">System Logs</span>
+                    <div class="code-block">
+                        <div class="code-comment"># View system logs</div>
+                        <div>sudo journalctl -xe</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># View authentication logs</div>
+                        <div>sudo tail -f /var/log/auth.log</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># View failed login attempts</div>
+                        <div>sudo grep "Failed password" /var/log/auth.log</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Fail2Ban - Intrusion Prevention</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Install Fail2Ban</div>
+                        <div>sudo apt install fail2ban</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Enable and start</div>
+                        <div>sudo systemctl enable fail2ban</div>
+                        <div>sudo systemctl start fail2ban</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Check status</div>
+                        <div>sudo fail2ban-client status sshd</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Rootkit Detection</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Install and run rkhunter</div>
+                        <div>sudo apt install rkhunter</div>
+                        <div>sudo rkhunter --update</div>
+                        <div>sudo rkhunter --check</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Security Best Practices</h3>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>Keep systems updated with latest security patches</li>
+                    <li>Use strong, unique passwords and SSH keys</li>
+                    <li>Implement principle of least privilege</li>
+                    <li>Enable and configure firewall (UFW, iptables)</li>
+                    <li>Disable unnecessary services and ports</li>
+                    <li>Use fail2ban or similar intrusion prevention</li>
+                    <li>Enable SELinux or AppArmor when available</li>
+                    <li>Regular security audits and vulnerability scans</li>
+                    <li>Monitor logs for suspicious activity</li>
+                    <li>Implement backup and disaster recovery plans</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

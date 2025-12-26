@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Security - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Master web application security including OWASP Top 10, XSS, SQL Injection, and more.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --danger: #ef4444;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .badge-danger {
+            background: var(--danger);
+        }
+        
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+        }
+        
+        ul { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .vuln-item { margin-bottom: 1.25rem; }
+        .vuln-item:last-child { margin-bottom: 0; }
+        .vuln-desc { font-size: 0.875rem; margin-bottom: 0.25rem; }
+        .vuln-example { font-size: 0.75rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+                Web Security
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>Web Application Security</h2>
+            <p>Master web vulnerabilities and learn how to protect web applications from attacks.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">OWASP Top 10 - 2021</h3>
+                <p class="card-desc">The most critical web application security risks</p>
+            </div>
+            <div class="card-content">
+                <div class="vuln-item">
+                    <span class="badge badge-danger">A01:2021 - Broken Access Control</span>
+                    <p class="vuln-desc">Users can access resources they shouldn't be able to</p>
+                    <p class="vuln-example">Example: Changing URL parameter to access another user's data</p>
+                </div>
+                
+                <div class="vuln-item">
+                    <span class="badge badge-danger">A02:2021 - Cryptographic Failures</span>
+                    <p class="vuln-desc">Sensitive data exposed due to weak or missing encryption</p>
+                    <p class="vuln-example">Example: Passwords stored in plaintext, weak SSL/TLS</p>
+                </div>
+                
+                <div class="vuln-item">
+                    <span class="badge badge-danger">A03:2021 - Injection</span>
+                    <p class="vuln-desc">Untrusted data sent to interpreter as part of command</p>
+                    <p class="vuln-example">Example: SQL, NoSQL, OS command injection</p>
+                </div>
+                
+                <div class="vuln-item">
+                    <span class="badge badge-danger">A04:2021 - Insecure Design</span>
+                    <p class="vuln-desc">Missing or ineffective security controls in design phase</p>
+                    <p class="vuln-example">Example: No rate limiting on authentication</p>
+                </div>
+                
+                <div class="vuln-item">
+                    <span class="badge badge-danger">A05:2021 - Security Misconfiguration</span>
+                    <p class="vuln-desc">Insecure default configurations or incomplete setup</p>
+                    <p class="vuln-example">Example: Default credentials, verbose error messages</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">SQL Injection (SQLi)</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">How it works:</h4>
+                <p style="font-size: 0.875rem; margin-bottom: 0.75rem;">Attacker inserts malicious SQL code into application queries</p>
+                <div class="code-block" style="margin-bottom: 1rem;">
+                    ' OR '1'='1' --<br>
+                    admin' --<br>
+                    '; DROP TABLE users; --
+                </div>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Prevention:</h4>
+                <ul>
+                    <li>Use parameterized queries (prepared statements)</li>
+                    <li>Input validation and sanitization</li>
+                    <li>Least privilege database accounts</li>
+                    <li>Use ORMs properly</li>
+                    <li>Never concatenate user input into SQL</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cross-Site Scripting (XSS)</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Types of XSS:</h4>
+                <ul style="margin-bottom: 1rem;">
+                    <li><strong>Reflected XSS:</strong> Malicious script reflected off web server</li>
+                    <li><strong>Stored XSS:</strong> Script permanently stored on target server</li>
+                    <li><strong>DOM-based XSS:</strong> Vulnerability in client-side code</li>
+                </ul>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Prevention:</h4>
+                <ul>
+                    <li>Output encoding/escaping</li>
+                    <li>Content Security Policy (CSP) headers</li>
+                    <li>Input validation on client and server</li>
+                    <li>Use frameworks with auto-escaping</li>
+                    <li>HTTPOnly and Secure cookie flags</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Cross-Site Request Forgery (CSRF)</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">How it works:</h4>
+                <p style="font-size: 0.875rem; margin-bottom: 1rem;">Attacker tricks victim into executing unwanted actions on authenticated site</p>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Prevention:</h4>
+                <ul>
+                    <li>Anti-CSRF tokens (synchronizer tokens)</li>
+                    <li>SameSite cookie attribute</li>
+                    <li>Double submit cookies</li>
+                    <li>Verify origin with standard headers</li>
+                    <li>Re-authentication for sensitive actions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Security Headers</h3>
+            </div>
+            <div class="card-content">
+                <div class="code-block">
+                    Content-Security-Policy: default-src 'self'<br><br>
+                    X-Frame-Options: DENY<br><br>
+                    X-Content-Type-Options: nosniff<br><br>
+                    Strict-Transport-Security: max-age=31536000<br><br>
+                    X-XSS-Protection: 1; mode=block
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Authentication & Session Management</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Best Practices:</h4>
+                <ul>
+                    <li>Use strong password hashing (bcrypt, Argon2)</li>
+                    <li>Implement multi-factor authentication (MFA)</li>
+                    <li>Secure session management with random tokens</li>
+                    <li>Set appropriate session timeouts</li>
+                    <li>Regenerate session IDs after login</li>
+                    <li>Use HTTPS for all authenticated pages</li>
+                    <li>Implement account lockout after failed attempts</li>
+                    <li>Never expose session IDs in URLs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

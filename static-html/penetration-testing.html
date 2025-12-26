@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Testing - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn ethical hacking and penetration testing methodologies and techniques.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --warning: #f59e0b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; color: var(--warning); }
+        .alert-desc { font-size: 0.875rem; color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        ul, ol { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .phase { margin-bottom: 1.5rem; }
+        .phase:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                Penetration Testing
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="alert-warning">
+            <div class="alert-title">⚠️ Legal Notice</div>
+            <div class="alert-desc">Only perform penetration testing on systems you own or have explicit written permission to test. Unauthorized access is illegal and can result in criminal charges.</div>
+        </div>
+
+        <div class="intro">
+            <h2>Ethical Hacking & Penetration Testing</h2>
+            <p>Learn the methodologies and techniques used by professional penetration testers.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Penetration Testing Phases</h3>
+                <p class="card-desc">The five stages of a professional pentest</p>
+            </div>
+            <div class="card-content">
+                <div class="phase">
+                    <span class="badge">1. Reconnaissance</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Gather information about the target (passive and active)</p>
+                    <ul>
+                        <li>OSINT (Open Source Intelligence)</li>
+                        <li>DNS enumeration, WHOIS lookups</li>
+                        <li>Social media reconnaissance</li>
+                        <li>Employee information gathering</li>
+                    </ul>
+                </div>
+                
+                <div class="phase">
+                    <span class="badge">2. Scanning & Enumeration</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Identify live hosts, open ports, and running services</p>
+                    <ul>
+                        <li>Port scanning (Nmap, Masscan)</li>
+                        <li>Service version detection</li>
+                        <li>Vulnerability scanning</li>
+                        <li>Network mapping</li>
+                    </ul>
+                </div>
+                
+                <div class="phase">
+                    <span class="badge">3. Gaining Access</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Exploit vulnerabilities to gain initial access</p>
+                    <ul>
+                        <li>Exploit known vulnerabilities</li>
+                        <li>Password attacks (brute force, dictionary)</li>
+                        <li>Social engineering</li>
+                        <li>Phishing campaigns</li>
+                    </ul>
+                </div>
+                
+                <div class="phase">
+                    <span class="badge">4. Maintaining Access</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Establish persistence and backdoors</p>
+                    <ul>
+                        <li>Install backdoors and rootkits</li>
+                        <li>Create privileged accounts</li>
+                        <li>Modify system configurations</li>
+                        <li>Schedule tasks for persistence</li>
+                    </ul>
+                </div>
+                
+                <div class="phase">
+                    <span class="badge">5. Covering Tracks</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Remove evidence and clean up</p>
+                    <ul>
+                        <li>Clear logs and history</li>
+                        <li>Remove uploaded tools</li>
+                        <li>Restore modified files</li>
+                        <li>Document findings for report</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Common Attack Vectors</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Network-Based Attacks:</h4>
+                <ul style="margin-bottom: 1rem;">
+                    <li>Man-in-the-Middle (MITM) attacks</li>
+                    <li>ARP poisoning and spoofing</li>
+                    <li>DNS hijacking</li>
+                    <li>Session hijacking</li>
+                    <li>Packet sniffing</li>
+                </ul>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Application-Based Attacks:</h4>
+                <ul>
+                    <li>SQL injection</li>
+                    <li>Cross-Site Scripting (XSS)</li>
+                    <li>Remote Code Execution (RCE)</li>
+                    <li>File inclusion vulnerabilities</li>
+                    <li>Authentication bypass</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Essential Penetration Testing Tools</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Information Gathering:</h4>
+                <ul style="margin-bottom: 1rem;">
+                    <li><strong>Nmap:</strong> Network scanner and port discovery</li>
+                    <li><strong>Recon-ng:</strong> Web reconnaissance framework</li>
+                    <li><strong>theHarvester:</strong> Email and subdomain discovery</li>
+                    <li><strong>Maltego:</strong> Visual link analysis</li>
+                </ul>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Exploitation:</h4>
+                <ul style="margin-bottom: 1rem;">
+                    <li><strong>Metasploit:</strong> Exploitation framework</li>
+                    <li><strong>Burp Suite:</strong> Web application testing</li>
+                    <li><strong>SQLmap:</strong> Automated SQL injection</li>
+                    <li><strong>Hydra:</strong> Password cracking tool</li>
+                </ul>
+                
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Post-Exploitation:</h4>
+                <ul>
+                    <li><strong>Mimikatz:</strong> Credential extraction</li>
+                    <li><strong>PowerSploit:</strong> PowerShell exploitation</li>
+                    <li><strong>Empire:</strong> Post-exploitation framework</li>
+                    <li><strong>BloodHound:</strong> Active Directory mapping</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Report Writing & Documentation</h3>
+            </div>
+            <div class="card-content">
+                <p style="font-size: 0.875rem; margin-bottom: 0.75rem;">A professional pentest report should include:</p>
+                <ul>
+                    <li><strong>Executive Summary:</strong> High-level overview for management</li>
+                    <li><strong>Scope & Methodology:</strong> What was tested and how</li>
+                    <li><strong>Findings:</strong> Vulnerabilities discovered with severity ratings</li>
+                    <li><strong>Evidence:</strong> Screenshots, logs, proof of concept</li>
+                    <li><strong>Recommendations:</strong> Specific remediation steps</li>
+                    <li><strong>Risk Assessment:</strong> CVSS scores and impact analysis</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

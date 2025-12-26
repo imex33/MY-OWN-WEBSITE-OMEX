@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Forensics - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn digital forensics fundamentals, evidence collection, and incident response techniques.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .alert-desc { font-size: 0.875rem; color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+        .code-block div { margin-bottom: 0.25rem; }
+        .code-comment { color: var(--muted); }
+        
+        ul, ol { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .section { margin-bottom: 1.5rem; }
+        .section:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                Digital Forensics
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>Digital Forensics & Incident Response</h2>
+            <p>Learn the fundamentals of digital forensics, evidence collection, and incident response techniques.</p>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">What is Digital Forensics?</div>
+            <div class="alert-desc">Digital forensics is the process of uncovering and interpreting electronic data for use in investigations. It involves collecting, preserving, analyzing, and presenting digital evidence in a legally acceptable manner.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Forensics Fundamentals</h3>
+                <p class="card-desc">Core principles of digital forensics</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">Key Principles</span>
+                    <ul>
+                        <li><strong>Chain of Custody:</strong> Maintain detailed records of evidence handling</li>
+                        <li><strong>Data Preservation:</strong> Never work on original evidence, always create forensic copies</li>
+                        <li><strong>Documentation:</strong> Record every step of the investigation process</li>
+                        <li><strong>Repeatability:</strong> Ensure findings can be reproduced by others</li>
+                        <li><strong>Legal Compliance:</strong> Follow legal procedures and standards</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Evidence Acquisition Process</span>
+                    <ol>
+                        <li>Identify potential sources of evidence</li>
+                        <li>Secure and isolate the scene/device</li>
+                        <li>Document the current state (photos, notes)</li>
+                        <li>Create forensic images using write-blockers</li>
+                        <li>Calculate and verify hash values (MD5, SHA-256)</li>
+                        <li>Store original evidence securely</li>
+                        <li>Perform analysis on forensic copies only</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">File System Forensics</h3>
+                <p class="card-desc">Analyzing file systems and storage media</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">Key Concepts</span>
+                    <ul>
+                        <li><strong>Deleted File Recovery:</strong> Files may remain in unallocated space</li>
+                        <li><strong>File Carving:</strong> Recovering files without file system metadata</li>
+                        <li><strong>Slack Space:</strong> Unused space at end of allocated clusters</li>
+                        <li><strong>Timestamps:</strong> MAC times (Modified, Accessed, Changed)</li>
+                        <li><strong>Hidden Data:</strong> Alternate data streams, hidden partitions</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Imaging Tools</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Create disk image with dd</div>
+                        <div>sudo dd if=/dev/sdX of=evidence.img bs=4M status=progress</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Verify with hash</div>
+                        <div>sha256sum evidence.img > evidence.sha256</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Analysis Tools</span>
+                    <ul>
+                        <li><strong>Autopsy:</strong> Open-source digital forensics platform</li>
+                        <li><strong>The Sleuth Kit:</strong> Command-line forensics tools</li>
+                        <li><strong>FTK Imager:</strong> Disk imaging and analysis</li>
+                        <li><strong>Volatility:</strong> Memory forensics framework</li>
+                        <li><strong>Wireshark:</strong> Network traffic analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Memory & Network Forensics</h3>
+                <p class="card-desc">Analyzing volatile data and network traffic</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">Memory Forensics</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Capture memory dump (Linux)</div>
+                        <div>sudo dd if=/dev/mem of=memory.dump</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Analyze with Volatility</div>
+                        <div>volatility -f memory.dump imageinfo</div>
+                        <div>volatility -f memory.dump --profile=LinuxProfile pslist</div>
+                    </div>
+                    <p style="color: var(--muted); font-size: 0.75rem; margin-top: 0.5rem;">
+                        Memory contains running processes, network connections, passwords, encryption keys
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Network Forensics</span>
+                    <div class="code-block">
+                        <div class="code-comment"># Capture packets with tcpdump</div>
+                        <div>sudo tcpdump -i eth0 -w capture.pcap</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Analyze with tshark</div>
+                        <div>tshark -r capture.pcap -Y "http.request"</div>
+                        <div class="code-comment" style="margin-top: 0.5rem;"># Extract files from pcap</div>
+                        <div>tcpflow -r capture.pcap</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Incident Response</h3>
+                <p class="card-desc">Responding to security incidents effectively</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">NIST Incident Response Lifecycle</span>
+                    <ol>
+                        <li><strong>Preparation:</strong> Develop IR plan, train team, deploy monitoring</li>
+                        <li><strong>Detection & Analysis:</strong> Identify and investigate incidents</li>
+                        <li><strong>Containment:</strong> Isolate affected systems, prevent spread</li>
+                        <li><strong>Eradication:</strong> Remove threat from environment</li>
+                        <li><strong>Recovery:</strong> Restore systems to normal operation</li>
+                        <li><strong>Post-Incident:</strong> Document lessons learned, improve defenses</li>
+                    </ol>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">First Responder Checklist</span>
+                    <ul>
+                        <li>✓ Document current time and initial observations</li>
+                        <li>✓ Take photos/screenshots of screens</li>
+                        <li>✓ Identify and preserve volatile data</li>
+                        <li>✓ Do NOT shut down systems immediately</li>
+                        <li>✓ Isolate affected systems from network</li>
+                        <li>✓ Begin chain of custody documentation</li>
+                        <li>✓ Contact appropriate authorities</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Order of Volatility</span>
+                    <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Collect evidence from most to least volatile:</p>
+                    <ol>
+                        <li>CPU registers and cache</li>
+                        <li>Routing tables, ARP cache, process table</li>
+                        <li>Memory (RAM)</li>
+                        <li>Temporary file systems</li>
+                        <li>Disk storage</li>
+                        <li>Remote logging and monitoring data</li>
+                        <li>Physical configuration and topology</li>
+                        <li>Backup media and archives</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Best Practices</h3>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>Always maintain detailed notes and documentation</li>
+                    <li>Never analyze original evidence - work on copies only</li>
+                    <li>Use write-blockers when creating forensic images</li>
+                    <li>Calculate and verify hash values at every step</li>
+                    <li>Follow your organization's IR plan and legal requirements</li>
+                    <li>Preserve evidence in legally acceptable manner</li>
+                    <li>Keep your forensics tools and skills up to date</li>
+                    <li>Practice on test systems before real investigations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
