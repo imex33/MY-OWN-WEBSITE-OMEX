@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn network security fundamentals including firewalls, VPNs, and network protocols.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        ul, ol { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        @media (max-width: 768px) {
+            .intro h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Network Security
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>Network Security Fundamentals</h2>
+            <p>Learn how to protect networks from unauthorized access, misuse, and threats.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">OSI Model & Network Layers</h3>
+                <p class="card-desc">Understanding the seven layers of network communication</p>
+            </div>
+            <div class="card-content">
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge">Layer 7 - Application</span>
+                    <p style="font-size: 0.875rem;">HTTP, HTTPS, FTP, DNS, SMTP - User-facing protocols</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge">Layer 4 - Transport</span>
+                    <p style="font-size: 0.875rem;">TCP/UDP - End-to-end communication and reliability</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge">Layer 3 - Network</span>
+                    <p style="font-size: 0.875rem;">IP, ICMP, Routing - Logical addressing and path determination</p>
+                </div>
+                <div>
+                    <span class="badge">Layer 2 - Data Link</span>
+                    <p style="font-size: 0.875rem;">MAC addresses, Switches - Physical addressing</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Firewalls & Access Control</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Types of Firewalls:</h4>
+                <ul>
+                    <li><strong>Packet Filtering:</strong> Examines packets and blocks/allows based on rules</li>
+                    <li><strong>Stateful Inspection:</strong> Tracks connection states and contexts</li>
+                    <li><strong>Application Layer:</strong> Deep packet inspection at application level</li>
+                    <li><strong>Next-Gen Firewalls (NGFW):</strong> IPS, deep packet inspection, malware detection</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">VPN & Tunneling Protocols</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Common VPN Protocols:</h4>
+                <ul>
+                    <li><strong>OpenVPN:</strong> Open-source, highly secure, uses SSL/TLS</li>
+                    <li><strong>WireGuard:</strong> Modern, fast, simple cryptography</li>
+                    <li><strong>IPSec:</strong> Suite of protocols for secure IP communications</li>
+                    <li><strong>L2TP/IPSec:</strong> Layer 2 Tunneling Protocol with IPSec encryption</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Network Scanning & Reconnaissance</h3>
+            </div>
+            <div class="card-content">
+                <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Port Scanning Techniques:</h4>
+                <ul>
+                    <li><strong>TCP Connect Scan:</strong> Full three-way handshake (most reliable but detectable)</li>
+                    <li><strong>SYN Scan:</strong> Half-open scan (stealthy, doesn't complete handshake)</li>
+                    <li><strong>UDP Scan:</strong> Scans UDP ports (slower, less reliable)</li>
+                    <li><strong>Service Detection:</strong> Identifies running services and versions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Network Security Best Practices</h3>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>Implement defense in depth with multiple security layers</li>
+                    <li>Use network segmentation to isolate critical systems</li>
+                    <li>Enable logging and monitoring for all network devices</li>
+                    <li>Keep firmware and software updated on network equipment</li>
+                    <li>Use strong encryption for all network communications</li>
+                    <li>Implement intrusion detection/prevention systems (IDS/IPS)</li>
+                    <li>Regular security audits and penetration testing</li>
+                    <li>Disable unnecessary services and ports</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

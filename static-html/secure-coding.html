@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Coding - Omex_ CyberSec Academy</title>
+    <meta name="description" content="Learn secure coding practices and prevent common vulnerabilities in your applications.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --primary: #3b82f6;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+        
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+        .back-btn:hover { background: var(--card); }
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .page-title svg { width: 32px; height: 32px; color: var(--primary); }
+        
+        .content { padding: 2rem 0; }
+        .intro { margin-bottom: 2rem; }
+        .intro h2 { font-size: 1.875rem; margin-bottom: 1rem; }
+        .intro p { color: var(--muted); }
+        
+        .alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .alert-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .alert-desc { font-size: 0.875rem; color: var(--muted); }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .card-desc { color: var(--muted); font-size: 0.875rem; }
+        .card-content { padding: 1.5rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-box {
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+        }
+        .code-bad {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .code-good {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .code-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.75rem;
+        }
+        .code-label-bad { color: var(--danger); }
+        .code-label-good { color: var(--success); }
+        
+        ul { margin-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+        li strong { color: var(--text); }
+        
+        .section { margin-bottom: 1.5rem; }
+        .section:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <div class="page-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                Secure Coding
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <div class="intro">
+            <h2>Secure Coding Practices</h2>
+            <p>Learn how to write secure code and prevent common vulnerabilities in your applications.</p>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">Why Secure Coding Matters</div>
+            <div class="alert-desc">Most security vulnerabilities stem from coding errors and poor security practices. By following secure coding principles, you can prevent vulnerabilities before they make it into production.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Core Security Principles</h3>
+                <p class="card-desc">Fundamental concepts for secure development</p>
+            </div>
+            <div class="card-content">
+                <span class="badge">Key Principles</span>
+                <ul>
+                    <li><strong>Least Privilege:</strong> Grant minimum permissions necessary</li>
+                    <li><strong>Defense in Depth:</strong> Multiple layers of security controls</li>
+                    <li><strong>Fail Securely:</strong> Errors should not expose sensitive data</li>
+                    <li><strong>Input Validation:</strong> Never trust user input</li>
+                    <li><strong>Output Encoding:</strong> Properly encode all output data</li>
+                    <li><strong>Authentication & Session Management:</strong> Implement securely</li>
+                    <li><strong>Cryptography:</strong> Use strong, proven algorithms</li>
+                    <li><strong>Error Handling:</strong> Don't leak sensitive information</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Injection Prevention</h3>
+                <p class="card-desc">SQL, NoSQL, OS command injection via untrusted data</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <div class="code-box code-bad">
+                        <div class="code-label code-label-bad">❌ Vulnerable Code:</div>
+                        <div>query = "SELECT * FROM users WHERE id = " + userId;</div>
+                    </div>
+                    <div class="code-box code-good">
+                        <div class="code-label code-label-good">✓ Secure Code:</div>
+                        <div>query = "SELECT * FROM users WHERE id = ?";</div>
+                        <div>stmt.setInt(1, userId);</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">XSS Prevention</h3>
+                <p class="card-desc">Protecting against Cross-Site Scripting attacks</p>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">Types of XSS</span>
+                    <ul>
+                        <li><strong>Reflected XSS:</strong> Malicious script in URL parameters</li>
+                        <li><strong>Stored XSS:</strong> Script saved in database, served to users</li>
+                        <li><strong>DOM-based XSS:</strong> Client-side script manipulation</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Prevention Techniques</span>
+                    <div class="code-box code-good">
+                        <div class="code-label code-label-good">✓ Output Encoding:</div>
+                        <div>output = escapeHtml(userInput);</div>
+                        <div>// Convert &lt; &gt; & " ' to HTML entities</div>
+                    </div>
+                    <div class="code-box code-good" style="margin-top: 0.5rem;">
+                        <div class="code-label code-label-good">✓ Content Security Policy:</div>
+                        <div>Content-Security-Policy: default-src 'self'; script-src 'self'</div>
+                    </div>
+                    <div class="code-box code-good" style="margin-top: 0.5rem;">
+                        <div class="code-label code-label-good">✓ HTTPOnly Cookies:</div>
+                        <div>Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Strict</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Input Validation Best Practices</h3>
+            </div>
+            <div class="card-content">
+                <span class="badge">Validation Rules</span>
+                <ul>
+                    <li><strong>Whitelist > Blacklist:</strong> Define what's allowed, not what's blocked</li>
+                    <li><strong>Validate Type:</strong> Ensure data matches expected type</li>
+                    <li><strong>Validate Length:</strong> Enforce minimum and maximum lengths</li>
+                    <li><strong>Validate Range:</strong> Check numeric values are within bounds</li>
+                    <li><strong>Validate Format:</strong> Use regex for emails, dates, etc.</li>
+                    <li><strong>Server-Side Validation:</strong> Never trust client-side only</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Secure Development Lifecycle</h3>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Requirements:</strong> Define security requirements early</li>
+                    <li><strong>Design:</strong> Threat modeling and security architecture review</li>
+                    <li><strong>Development:</strong> Follow secure coding standards</li>
+                    <li><strong>Testing:</strong> Security testing (SAST, DAST, penetration testing)</li>
+                    <li><strong>Deployment:</strong> Secure configuration management</li>
+                    <li><strong>Maintenance:</strong> Regular updates and security patches</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Security Testing Tools</h3>
+            </div>
+            <div class="card-content">
+                <div class="section">
+                    <span class="badge">Static Analysis (SAST)</span>
+                    <ul>
+                        <li>SonarQube - Code quality and security</li>
+                        <li>Checkmarx - Commercial SAST platform</li>
+                        <li>Bandit - Python security linter</li>
+                        <li>ESLint security plugins - JavaScript</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Dynamic Analysis (DAST)</span>
+                    <ul>
+                        <li>OWASP ZAP - Web app security scanner</li>
+                        <li>Burp Suite - Web vulnerability scanner</li>
+                        <li>Nikto - Web server scanner</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <span class="badge">Dependency Scanning</span>
+                    <ul>
+                        <li>npm audit / yarn audit - Node.js dependencies</li>
+                        <li>OWASP Dependency-Check - Multiple languages</li>
+                        <li>Snyk - Dependency vulnerability scanning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
